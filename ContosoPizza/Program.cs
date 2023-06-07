@@ -6,12 +6,13 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<PizzaService>();
+// siempre poner los nuevos contenedores arriba
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<PizzaContext>(options =>
     options.UseSqlite("Data Source=ContosoPizza.db"));
 
 var app = builder.Build();
-builder.Services.AddScoped<PizzaService>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
